@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-md-12 mx-auto m-4 ">
+            <div class="card ">
+                <div class="card-header   ">
+                    <h2 class="">List of Articles</h2>
+                    <a href="{% url 'create-article' %}" class="btn btn-primary ">Create</a>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered ">
+                        <thead>
+                            <th class="">ID</th>
+                            <th class="">Title</th>
+                            <th class="">Description</th>
+                            <th class="">Category</th>
+                            <th class="">Tags</th>
+                            <th class="">Actions</th>
+                        </thead>
+                        <tbody>
+                            {% for article in articles %}
+                            <tr>
+                                <td class="">{{ article.id }}</td>
+                                <td class=""> {{article.title}} </td>
+                                <td class=""> {{article.description}} </td>
+                                <td class=""> {{article.category.name}} </td>
+                                <td class="">
+                                    
+                                    <ul>
+                                        {% for tag in  article.tags.all %}
+                                        <li>{{ tag.name }}</li>
+                                        {% endfor %}
+                                    </ul>
+
+                                </td>
+                                <td>
+                                     <a href="/articles/{{article.id}}" class="btn btn-sm btn-warning">Show</a>
+                                    <a href="{%  url 'show-article' article.id  %}"class="btn btn-sm btn-warning">Show</a>
+                                    <a href="{%  url 'edit-article' article.id  %}" class="btn btn-sm btn-success">Edit</a>
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <a href="{%  url 'delete-article' article.id  %}" class="btn btn-sm btn-danger mt-2">Delete</a>
+                                    </form>
+
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+{% endblock %}

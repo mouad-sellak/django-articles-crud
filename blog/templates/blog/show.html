@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-10 mx-auto m-4 ">
+                <div class="card ">
+                    <div class="card-header   ">
+                        <h2 class="">Show Article</h2>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered bg-secondary text-white">
+                            <thead>
+                                <th class="">ID</th>
+                                <th class="">Title</th>
+                                <th class="">Category</th>
+                                <th class="">Tags</th>
+                                <th class="">Actions</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="">{{ article.id }}</td>
+                                    <td class=""> {{article.title}} </td>
+                                    <td class=""> {{article.description}} </td>
+                                    <td class=""> {{article.category.name}} </td>
+                                    <td class="">
+                                    
+                                        <ul>
+                                            {% for tag in article.tags.all %}
+                                            <li>{{ tag.name }}</li>
+                                            {% endfor %}
+                                        </ul>
+    
+                                    </td>
+                                    <td> <a href="{% url 'list-of-articles' %}" class="btn btn-sm btn-primary">back</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-10 mx-auto m-4 ">
+                <div class="card ">
+                    <div class="card-header   ">
+                        <h2 class="">Create Article</h2>
+                    </div>
+                    <div class="card-body">
+                        <!-- {{ form.as_p }}
+                        {{ form.as_ul }} -->
+                    <form method="post"  >
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <div class="form-group my-3">
+                            <label for="" class="form-label">{{field.label}}</label>
+                            {{field}}
+                        </div>
+                        {% endfor%}
+                        <button type="submit" class="btn-primary m-2">Add New Article</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
