@@ -2,6 +2,70 @@
 
 {% block content %}
 
+
+{% for article in articles %}
+
+
+<div class="post post-xl">
+    <!-- top section -->
+    <div class="post-top">
+        <ul class="meta list-inline mb-0">
+            <li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author"
+                        alt="author" />Mouad Sellak</a></li>
+            <li class="list-inline-item">{{article.created}}</li>
+            <li class="list-inline-item"><i class="icon-bubble"></i> (0)</li>
+        </ul>
+        <h5 class="post-title mb-0 mt-4"><a href="blog-single.html">{{article.title}}</a>
+        </h5>
+    </div>
+    <!-- thumbnail -->
+    <div class="thumb rounded">
+        <a href="category.html" class="category-badge lg position-absolute">{{article.category}}</a>
+        <span class="post-format">
+            <i class="icon-picture"></i>
+        </span>
+        <a href="blog-single.html">
+            <div class="inner">
+                <img src="{{article.picture.url }}" alt="post-title" />
+            </div>
+        </a>
+    </div>
+    <!-- details -->
+    <div class="details">
+        <p class="excerpt mb-0">{{ article.description }}</p>
+    </div>
+    <div class="post-bottom clearfix d-flex align-items-center">
+        <div class="social-share me-auto">
+            <button class="toggle-button icon-share"></button>
+            <ul class="icons list-unstyled list-inline mb-0">
+                {% for tag in article.tags.all %}
+                <li class="list-inline-item"><a class="category-badge sm" href="#">{{tag}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="float-end d-none d-md-block">
+            <a href="blog-single.html" class="more-link">Read more ...<i class="icon-arrow-right"></i></a>
+        </div>
+        <div class="more-button d-block d-md-none float-end">
+            <a href="blog-single.html"><span class="icon-options"></span></a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% endfor %}
+
+
+
+
+
+
+
+
 <!-- <div class="container">
     <div class="row">
         <div class="col-md-12 mx-auto m-4 ">

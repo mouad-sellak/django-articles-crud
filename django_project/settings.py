@@ -120,7 +120,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIR=[ BASE_DIR / "django_bright" / "static"]
+STATICFILES_DIRS=[ BASE_DIR / "django_project" / "static"]
+
+MEDIA_ROOT = "media"
+
+MEDIA_URL ="/images/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

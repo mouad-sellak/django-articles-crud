@@ -7,6 +7,7 @@ class Article(models.Model):
     title=CharField(max_length=200,unique=True)
     description = TextField(null=True)
     created = DateTimeField(auto_now_add=True)
+    picture= models.ImageField(null=True, upload_to="articles/")
     updated = DateTimeField(auto_now=True)
     category= ForeignKey('Category',null=True, on_delete=models.SET_NULL)
     tags=ManyToManyField('Tag')

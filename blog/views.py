@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import Article
+from .models import Article, Category
 from .forms import ArticleForm
 # Create your views here.
 
@@ -8,7 +8,8 @@ from .forms import ArticleForm
 def index(request):
     articles=Article.objects.all() #objects containts all methodes get filter all, exclude
    # articles=Article.objects.filter(state=1) #objects containts all methodes get filter all, exclude
-    return render(request,'blog/index.html', {'articles':articles} )
+    categories=Category.objects.all()
+    return render(request,'blog/index.html', {'articles':articles, 'categories' : categories} )
 
 def show(request,id):
     #return HttpResponse(id)
