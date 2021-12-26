@@ -1,7 +1,340 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <div class="container ">
+
+
+
+
+<div class="container-xl">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'list-of-articles' %}">Home</a></li>
+            <!-- <li class="breadcrumb-item"><a href="#">Inspiration</a></li> -->
+            <li class="breadcrumb-item active" aria-current="page">{{article.tittle}}</li>
+        </ol>
+    </nav>
+
+    <div class="row gy-4">
+
+        <div class="col-lg-8">
+            <!-- post single -->
+            <div class="post post-single">
+                <!-- post header -->
+                <div class="post-header">
+                    <h1 class="title mt-0 mb-3">{{ article.title }}</h1>
+                    <ul class="meta list-inline mb-0">
+                        <li class="list-inline-item"><a href="#"><img src="{{article.author.picture.url}}" width="10%" height="10%" class=" mx-2  rounded-circle "
+                                    alt="author" />{{ article.author }}</a></li>
+                        <li class="list-inline-item"><a href="#">{{article.category}}</a></li>
+                        <li class="list-inline-item">{{article.created}}</li>
+                    </ul>
+                </div>
+                <!-- featured image -->
+                <div class="featured-image">
+                    <img src="{{ article.picture.url }}" alt="post-title" />
+                </div>
+                <!-- post content -->
+                <div class="post-content clearfix">
+
+                    <p>{{article.description }}</p>
+                    <p>{{article.description }}</p>
+                    <p>{{article.description }}</p>
+                </div>
+                <!-- post bottom section -->
+                <div class="post-bottom">
+                    <div class="row d-flex align-items-center">
+                        <div class="col-md-6 col-12 text-center text-md-start">
+                            <!-- tags -->
+                            {% for tag in article.tags.all %}
+                            <li class="list-inline-item"><a class="category-badge sm" href="#">{{ tag }}</a></li>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <ul class="social-icons list-unstyled list-inline mb-0 float-md-end">
+                                <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="spacer" data-height="50"></div>
+
+
+
+
+
+            <!-- section header -->
+            <div class="section-header">
+                <h3 class="section-title mt-4">Leave Comment</h3>
+            </div>
+            <!-- comment form -->
+            <div class="comment-form rounded bordered padding-30">
+
+                <form id="comment-form" class="comment-form" method="post">
+
+                    <div class="messages"></div>
+
+                    <div class="row">
+
+                        <div class="column col-md-12">
+                            <!-- Comment textarea -->
+                            <div class="form-group">
+                                <textarea name="InputComment" id="InputComment" class="form-control" rows="4"
+                                    placeholder="Your comment here..." required="required"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="column col-md-6">
+                            <!-- Email input -->
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="InputEmail" name="InputEmail"
+                                    placeholder="Email address" required="required">
+                            </div>
+                        </div>
+
+                        <div class="column col-md-6">
+                            <!-- Name input -->
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="InputWeb" id="InputWeb"
+                                    placeholder="Website" required="required">
+                            </div>
+                        </div>
+
+                        <div class="column col-md-12">
+                            <!-- Email input -->
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="InputName" name="InputName"
+                                    placeholder="Your name" required="required">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" name="submit" id="submit" value="Submit"
+                        class="btn btn-default">Submit</button><!-- Submit Button -->
+
+                </form>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+
+            <!-- sidebar -->
+            <div class="sidebar">
+                <!-- widget about -->
+                <!-- <div class="widget rounded">
+                    <div class="widget-about data-bg-image text-center" data-bg-image="images/map-bg.png">
+                        <img src="images/logo.svg" alt="logo" class="mb-4" />
+                        <p class="mb-4">Hello, We’re content writer who is fascinated by content fashion, celebrity and
+                            lifestyle. We helps clients bring the right content to the right people.</p>
+                        <ul class="social-icons list-unstyled list-inline mb-0">
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div> -->
+
+                <div class="widget rounded">
+                    <div class="widget-header text-center">
+                        <h3 class="widget-title">Similar Posts</h3>
+                    </div>
+                    <div class="widget-content">
+
+                       {% for article in articles %}
+
+                        <div class="post post-list-sm circle">
+                            <div class="thumb ">
+                                <a href="{% url 'show-article' article.slug %}">
+                                    <div class="inner">
+                                        <img src="{{article.picture.url}}" width="80%" height="80%" alt="post-title" />
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="details clearfix">
+                                <h6 class="post-title my-0"><a href="{% url 'show-article' article.slug %}">{{article.title}}</a></h6>
+                                <ul class="meta list-inline mt-1 mb-0">
+                                    <li class="list-inline-item">{{article.created}}</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                       {% endfor %}
+
+
+
+                    </div>
+                </div>
+
+                <!-- widget categories -->
+                <!-- <div class="widget rounded">
+                    <div class="widget-header text-center">
+                        <h3 class="widget-title">Explore Topics</h3>
+                        <img src="images/wave.svg" class="wave" alt="wave" />
+                    </div>
+                    <div class="widget-content">
+                        <ul class="list">
+                            <li><a href="#">Lifestyle</a><span>(5)</span></li>
+                            <li><a href="#">Inspiration</a><span>(2)</span></li>
+                            <li><a href="#">Fashion</a><span>(4)</span></li>
+                            <li><a href="#">Politic</a><span>(1)</span></li>
+                            <li><a href="#">Trending</a><span>(7)</span></li>
+                            <li><a href="#">Culture</a><span>(3)</span></li>
+                        </ul>
+                    </div>
+
+                </div> -->
+
+                <!-- widget newsletter -->
+                <!-- <div class="widget rounded">
+                    <div class="widget-header text-center">
+                        <h3 class="widget-title">Newsletter</h3>
+                        <img src="images/wave.svg" class="wave" alt="wave" />
+                    </div>
+                    <div class="widget-content">
+                        <span class="newsletter-headline text-center mb-3">Join 70,000 subscribers!</span>
+                        <form>
+                            <div class="mb-2">
+                                <input class="form-control w-100 text-center" placeholder="Email address…" type="email">
+                            </div>
+                            <button class="btn btn-default btn-full" type="submit">Sign Up</button>
+                        </form>
+                        <span class="newsletter-privacy text-center mt-3">By signing up, you agree to our <a
+                                href="#">Privacy Policy</a></span>
+                    </div>
+                </div> -->
+
+                <!-- widget post carousel -->
+                <!-- <div class="widget rounded">
+                    <div class="widget-header text-center">
+                        <h3 class="widget-title">Celebration</h3>
+                        <img src="images/wave.svg" class="wave" alt="wave" />
+                    </div>
+                    <div class="widget-content">
+                        <div class="post-carousel-widget">
+                            <!-- post -->
+                <!-- <div class="post post-carousel">
+                                <div class="thumb rounded">
+                                    <a href="category.html" class="category-badge position-absolute">How to</a>
+                                    <a href="blog-single.html">
+                                        <div class="inner">
+                                            <img src="images/widgets/widget-carousel-1.jpg" alt="post-title" />
+                                        </div>
+                                    </a>
+                                </div>
+                                <h5 class="post-title mb-0 mt-4"><a href="blog-single.html">5 Easy Ways You Can Turn
+                                        Future Into Success</a></h5>
+                                <ul class="meta list-inline mt-2 mb-0">
+                                    <li class="list-inline-item"><a href="#">Katen Doe</a></li>
+                                    <li class="list-inline-item">29 March 2021</li>
+                                </ul>
+                            </div>
+                            <div class="post post-carousel">
+                                <div class="thumb rounded">
+                                    <a href="category.html" class="category-badge position-absolute">Trending</a>
+                                    <a href="blog-single.html">
+                                        <div class="inner">
+                                            <img src="images/widgets/widget-carousel-2.jpg" alt="post-title" />
+                                        </div>
+                                    </a>
+                                </div>
+                                <h5 class="post-title mb-0 mt-4"><a href="blog-single.html">Master The Art Of Nature
+                                        With These 7 Tips</a></h5>
+                                <ul class="meta list-inline mt-2 mb-0">
+                                    <li class="list-inline-item"><a href="#">Katen Doe</a></li>
+                                    <li class="list-inline-item">29 March 2021</li>
+                                </ul>
+                            </div>
+                            <div class="post post-carousel">
+                                <div class="thumb rounded">
+                                    <a href="category.html" class="category-badge position-absolute">How to</a>
+                                    <a href="blog-single.html">
+                                        <div class="inner">
+                                            <img src="images/widgets/widget-carousel-1.jpg" alt="post-title" />
+                                        </div>
+                                    </a>
+                                </div>
+                                <h5 class="post-title mb-0 mt-4"><a href="blog-single.html">5 Easy Ways You Can Turn
+                                        Future Into Success</a></h5>
+                                <ul class="meta list-inline mt-2 mb-0">
+                                    <li class="list-inline-item"><a href="#">Katen Doe</a></li>
+                                    <li class="list-inline-item">29 March 2021</li>
+                                </ul>
+                            </div> -->
+            </div>
+            <!-- <div class="slick-arrows-bot">
+                <button type="button" data-role="none" class="carousel-botNav-prev slick-custom-buttons"
+                    aria-label="Previous"><i class="icon-arrow-left"></i></button>
+                <button type="button" data-role="none" class="carousel-botNav-next slick-custom-buttons"
+                    aria-label="Next"><i class="icon-arrow-right"></i></button>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- widget advertisement -->
+    <!-- <div class="widget no-container rounded text-md-center">
+                    <span class="ads-title">- Sponsored Ad -</span>
+                    <a href="#" class="widget-ads">
+                        <img src="images/ads/ad-360.png" alt="Advertisement" />
+                    </a>
+                </div> -->
+
+    <!-- widget tags -->
+    <!-- <div class="widget rounded">
+                    <div class="widget-header text-center">
+                        <h3 class="widget-title">Tag Clouds</h3>
+                        <img src="images/wave.svg" class="wave" alt="wave" />
+                    </div>
+                    <div class="widget-content">
+                        <a href="#" class="tag">#Trending</a>
+                        <a href="#" class="tag">#Video</a>
+                        <a href="#" class="tag">#Featured</a>
+                        <a href="#" class="tag">#Gallery</a>
+                        <a href="#" class="tag">#Celebrities</a>
+                    </div>
+                </div> -->
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container ">
         <div class="row">
             <div class="col-md-10 mx-auto m-4 ">
                 <div class="card ">
@@ -40,5 +373,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 {% endblock %}

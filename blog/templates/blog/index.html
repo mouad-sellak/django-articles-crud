@@ -9,13 +9,13 @@
 <div class="post post-xl">
     <!-- top section -->
     <div class="post-top">
-        <ul class="meta list-inline mb-0">
-            <li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author"
-                        alt="author" />Mouad Sellak</a></li>
-            <li class="list-inline-item">{{article.created}}</li>
-            <li class="list-inline-item"><i class="icon-bubble"></i> (0)</li>
+        <ul class="meta list-inline ">
+            <li class="list-inline-item"><a href=""><img src="{{ article.author.picture.url }}" width="10%" height="10%" class=" mx-2  rounded-circle "
+                        alt="author" />{{ article.author }}</a></li>
+            <li class="list-inline-item" style="float:right" >{{article.created}}</li>
+            <!-- <li class="list-inline-item"><i class="icon-bubble"></i> (0)</li> -->
         </ul>
-        <h5 class="post-title mb-0 mt-4"><a href="blog-single.html">{{article.title}}</a>
+        <h5 class="post-title mb-0 "><a href="{% url 'show-article' article.slug %}">{{article.title}}</a>
         </h5>
     </div>
     <!-- thumbnail -->
@@ -24,7 +24,7 @@
         <span class="post-format">
             <i class="icon-picture"></i>
         </span>
-        <a href="blog-single.html">
+        <a href="{% url 'show-article' article.slug %}">
             <div class="inner">
                 <img src="{{article.picture.url }}" alt="post-title" />
             </div>
@@ -44,7 +44,7 @@
             </ul>
         </div>
         <div class="float-end d-none d-md-block">
-            <a href="blog-single.html" class="more-link">Read more ...<i class="icon-arrow-right"></i></a>
+            <a href="{% url 'show-article' article.slug %}" class="more-link">Read more ...<i class="icon-arrow-right"></i></a>
         </div>
         <div class="more-button d-block d-md-none float-end">
             <a href="blog-single.html"><span class="icon-options"></span></a>

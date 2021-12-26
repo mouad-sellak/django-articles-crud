@@ -39,7 +39,7 @@
 
     <div class="container-xl">
         <!-- header -->
-        <header class="header-minimal">
+        <header class="header-minimal ">
             
             <div class="row align-items-center">
 
@@ -51,7 +51,7 @@
 
                 <div class="col-4 text-center">
                     <!-- site logo -->
-                    <a class="navbar-brand" href="minimal.html"><img src="images/logo.svg" alt="logo" /></a> 
+                    <a class="navbar-brand" href="{% url 'list-of-articles' %}"><b>Learn blog</b></a> 
                 </div>
 
                 <div class="col-4">
@@ -69,6 +69,8 @@
 	<section class="main-content-lg">
         <div class="container-minimal">
             <!-- post -->
+
+
 
             {% block content %} {% endblock %}
 
@@ -88,12 +90,12 @@
 	</section>
 
 	<!-- instagram feed -->
-	<div class="instagram">
+	<!-- <div class="instagram">
 		<div class="container-xl">
-			<!-- button -->
-			<a href="#" class="btn btn-default btn-instagram">@Katen on Instagram</a>
+			 button -->
+			<!-- <a href="#" class="btn btn-default btn-instagram">@Katen on Instagram</a> -->
 			<!-- images -->
-			<div class="instagram-feed d-flex flex-wrap">
+			<!-- <div class="instagram-feed d-flex flex-wrap">
 				<div class="insta-item col-sm-2 col-6 col-md-2">
 					<a href="#">
 						<img src="images/insta/insta-1.jpg" alt="insta-title" />
@@ -124,18 +126,18 @@
 						<img src="images/insta/insta-6.jpg" alt="insta-title" />
 					</a>
 				</div>
-			</div>
-		</div>
-	</div>
+			</div> -->
+		<!-- </div> -->
+	<!-- </div> --> 
 
 	<!-- footer -->
-	<footer>
+	<footer class="bg-light" >
 		<div class="container-xl">
 			<div class="footer-inner">
 				<div class="row d-flex align-items-center gy-4">
 					<!-- copyright text -->
 					<div class="col-md-4">
-						<span class="copyright">© 2021 Sellak Mouad. with bright coding.</span>
+						<span class="copyright"><b>© 2021 Sellak Mouad. Bright Coding with Idbrahim.</b></span>
 					</div>
 
 					<!-- social icons -->
@@ -185,7 +187,7 @@
 
 	<!-- logo -->
 	<div class="logo">
-		<img src="images/logo.svg" alt="Katen" />
+		<a class="navbar-brand" href="{% url 'list-of-articles' %}"><b>Learn blog</b></a> 
 	</div>
 
 	<!-- menu -->
@@ -195,8 +197,8 @@
 				<a href="index.html">Home</a>
 			
 			</li>
-			<li><a href="category.html">Lifestyle</a></li>
-			<li><a href="category.html">Inspiration</a></li>
+			<!-- <li><a href="category.html">Lifestyle</a></li>
+			<li><a href="category.html">Inspiration</a></li> -->
 			<li>
 				<a href="#">Categories</a>
 				<ul class="submenu">
@@ -205,7 +207,7 @@
                     {% endfor %}
 				</ul>
 			</li>
-			<li><a href="contact.html">Contact</a></li>
+			<!-- <li><a href="contact.html">Contact</a></li> -->
 		</ul>
 	</nav>
 
