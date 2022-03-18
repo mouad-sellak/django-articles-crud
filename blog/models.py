@@ -15,10 +15,10 @@ class Article(models.Model):
     author=ForeignKey('Author',null=True,on_delete=models.SET_NULL)
     tags=ManyToManyField('Tag')
 
-    def __str__(self):
+    def __str__(self): #the way you want to appear in db admin
         return self.title
     
-    def save(self, *args, **kwargs): #*args : allow list of args,  **kwargs diction of args
+    def save(self, *args, **kwargs): #*args : allow list of args,  **kwargs dictionnary of args
         if not self.slug:
             self.slug=slugify(self.title)
         super().save(*args, **kwargs)

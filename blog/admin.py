@@ -7,6 +7,7 @@ from .models import Tag
 class ArticleAdmin(admin.ModelAdmin):
     list_display=['title','slug','category', 'created']
     list_filter=['category']
+    list_per_page=2
     
 admin.site.register(Article, ArticleAdmin) 
 

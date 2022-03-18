@@ -5,6 +5,7 @@ from .forms import ArticleForm
 # Create your views here.
 
 
+
 def index(request):
     articles=Article.objects.all() #objects containts all methodes get filter all, exclude
    #articles=Article.objects.filter(state=1) #objects containts all methodes get filter all, exclude
